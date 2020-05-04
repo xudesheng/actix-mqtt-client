@@ -1,7 +1,7 @@
 use std::time::Duration;
 
 use actix::{Actor, Arbiter, AsyncContext, Context, Handler, Message, Recipient};
-use log::{error, info, trace};
+use log::{error, trace};
 use mqtt::packet::PingreqPacket;
 
 use crate::actors::actions::status::PacketStatusMessages;

@@ -63,7 +63,7 @@ macro_rules! impl_response_packet_actor {
                 msg: crate::actors::packets::PacketMessage<mqtt::packet::$packet>,
                 ctx: &mut Self::Context,
             ) -> Self::Result {
-                log::info!(concat!("Handling message for ", stringify!($name)));
+                log::trace!(concat!("Handling message for ", stringify!($name)));
                 let id = $get_id_from_packet(&msg.packet);
                 crate::actors::packets::reset_packet_status(
                     stringify!($name),
@@ -157,7 +157,7 @@ macro_rules! impl_send_packet_actor {
         impl actix::Handler<$message> for $name {
             type Result = ();
             fn handle(&mut self, msg: $message, ctx: &mut Self::Context) -> Self::Result {
-                log::info!(concat!("Handling message for ", stringify!($name)));
+                log::trace!(concat!("Handling message for ", stringify!($name)));
                 let packet_and_id_option = $create_packet_and_id_from_message(&msg);
                 if packet_and_id_option.is_none() {
                     return;
