@@ -83,7 +83,7 @@ impl Handler<Pingreq> for PingreqActor {
                 .await;
             match connect_status_result {
                 Ok(None) => {
-                    info!("Server not connected yet, do nothing.");
+                    trace!("Server not connected yet, do nothing.");
                     return;
                 }
                 Err(e) => {
@@ -91,7 +91,7 @@ impl Handler<Pingreq> for PingreqActor {
                     return;
                 }
                 _ => {
-                    info!("Server connected, will send ping");
+                    trace!("Server connected, will send ping");
                 }
             }
 
